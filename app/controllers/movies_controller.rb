@@ -7,8 +7,14 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all
-  end
+     @movies = Movie.all
+     #added below for hw2-part1
+     if params.has_key? :title_header
+     @movies = Movie.order(params[:title_header])
+     elsif params.has_key? :title_release_date
+     @movies = Movie.order(params[:title_release_date])     
+     end  
+ end
 
   def new
     # default: render 'new' template
