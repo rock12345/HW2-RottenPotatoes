@@ -11,7 +11,9 @@ class MoviesController < ApplicationController
      #added below for hw2-part1
      if params.has_key? :title_header
      @movies = Movie.order(params[:title_header])
+     @css_title_header_class = 'hilite'
      elsif params.has_key? :title_release_date
+     @css_release_date_header_class = 'hilite'
      @movies = Movie.order(params[:title_release_date])     
      end  
  end
