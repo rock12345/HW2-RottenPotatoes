@@ -7,16 +7,10 @@ class MoviesController < ApplicationController
   end
 
   def index
-     @movies = Movie.all
-     #added below for hw2-part1
-     if params.has_key? :title_header
-     @movies = Movie.order(params[:title_header])
-     @css_title_header_class = 'hilite'
-     elsif params.has_key? :title_release_date
-     @css_release_date_header_class = 'hilite'
-     @movies = Movie.order(params[:title_release_date]).reverse_order     
-     end  
- end
+   
+  @movies = Movie.order(params[:title_header])
+   
+  end
 
   def new
     # default: render 'new' template
