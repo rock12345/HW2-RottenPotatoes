@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
      @css_title_header_class = 'hilite'
      elsif params.has_key? :title_release_date
      @css_release_date_header_class = 'hilite'
-     @movies = Movie.order(params[:title_release_date]).reverse_order     
+     @movies = Movie.order(params[:title_release_date])     
      end  
  end
 
