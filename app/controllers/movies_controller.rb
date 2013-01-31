@@ -8,6 +8,7 @@ class MoviesController < ApplicationController
 
   def index
      @movies = Movie.all
+     @all_ratings = Movie.ratings
      #added below for hw2-part1
      if params.has_key? :title_header
      @movies = Movie.order(params[:title_header])
