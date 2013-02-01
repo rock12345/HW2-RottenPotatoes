@@ -9,6 +9,11 @@ class MoviesController < ApplicationController
   def index
      @movies = Movie.all
      @all_ratings = Movie.ratings
+     if params.has_key? :ratings
+     @checkbox_rating_selections = params[:ratings].keys
+    # @movies = Movie.where("rating = ?", @checkbox_rating_selections)
+     @movies = Movie.where(:rating =>@checkbox_rating_selections)    
+     end
      #added below for hw2-part1
      if params.has_key? :title_header
      @movies = Movie.order(params[:title_header])
