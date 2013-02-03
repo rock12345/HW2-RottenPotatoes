@@ -15,15 +15,14 @@ class MoviesController < ApplicationController
      @movies = Movie.where(:rating =>@checkbox_rating_selections)    
      session[:rating_selections] = @checkbox_rating_selections
      end
+     @checked_values = session[:rating_selections]
      #added below for hw2-part1
      if params.has_key? :title_header
-     @checkbox_rating_selections = session[:rating_selections]
-     @movies = Movie.where(:rating=>@checkbox_rating_selections).order(params[:title_header])
+     @movies = Movie.where(:rating=>@checked_values).order(params[:title_header])
      @css_title_header_class = 'hilite'
      elsif params.has_key? :title_release_date
-     @checkbox_rating_selections = session[:rating_selections]
      @css_release_date_header_class = 'hilite'
-     @movies = Movie.where(:rating=>@checkbox_rating_selections).order(params[:title_release_date])     
+     @movies = Movie.where(:rating=>@checked_values).order(params[:title_release_date])     
      end  
  end
 

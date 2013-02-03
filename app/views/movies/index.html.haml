@@ -1,3 +1,4 @@
+
 -#  This file is app/views/movies/index.html.haml
 %h1 All Movies
 -# added for HW2-2
@@ -5,7 +6,10 @@
   Include: 
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", "ratings_#{rating}", (checked = true)
+    - if @checked_values.nil?
+      = check_box_tag "ratings[#{rating}]", "ratings_#{rating}", (checked = true)
+    - else   
+      = check_box_tag "ratings[#{rating}]", "ratings_#{rating}", (checked = true if @checked_values.include?(rating))
   = submit_tag 'Refresh', :id=>"ratings_submit"
 -#
 %table#movies
